@@ -33,7 +33,7 @@ while (iterator.hasNext()){
 	%>
 	<h5>User: <%=ts.getUser()%></h5> 
 	<h5>Tweet: <%=ts.getTweet()%> </h5>
-	<%-- <a href="/ac32007examples/Tweet/<%=ts.getUser() %>" ><%=ts.getTweet() %></a><br/> --%><%
+	<a href="/ac32007examples/Tweet/<%=ts.getUser() %>" ><%=ts.getTweet() %></a><br/><%
 
 }
 }

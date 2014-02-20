@@ -25,6 +25,7 @@ import com.datastax.driver.core.Session;
 
 import com.example.andy.lib.*;
 import com.example.andy.stores.TweetStore;
+
 public class TweetModel {
 	Cluster cluster;
 	public TweetModel(){
