@@ -1,9 +1,8 @@
 package com.example.andy.servlets;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,52 +11,51 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.datastax.driver.core.Cluster;
-import com.example.andy.lib.*;
-import com.example.andy.models.*;
-import com.example.andy.stores.*;
+import com.example.andy.stores.UserStore;
 
 /**
- * Servlet implementation class Tweet
+ * Servlet implementation class users
  */
-@WebServlet({ "/Tweets", "/Tweets/*" })
-public class Tweet extends HttpServlet {
+@WebServlet("/Profile")
+public class users extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private Cluster cluster;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Tweet() {
+    public users() {
         super();
         // TODO Auto-generated constructor stub
     }
-    public void init(ServletConfig config) throws ServletException {
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		cluster = CassandraHosts.getCluster();
 	}
-    
+
+	/**
+	 * @see Servlet#getServletInfo()
+	 */
+	public String getServletInfo() {
+		// TODO Auto-generated method stub
+		return null; 
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		String args[]=Convertors.SplitRequestPath(request);
-		Login login = new Login();
-		
+		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		UserStore user = (UserStore)session.getAttribute("user");
-		
-		TweetModel tm= new TweetModel();
-		tm.setCluster(cluster);
-		LinkedList<TweetStore> tweetList = tm.getFollowTweets(user.getUserName());
-		
-		LinkedList<TweetStore> sortedtTweetList =  login.sortTweets(tweetList);
-		
-		
-		request.setAttribute("Tweets", sortedtTweetList); //Set a bean with the list in it
-		RequestDispatcher rd = request.getRequestDispatcher("/RenderTweets.jsp"); 
+		PrintWriter out = response.getWriter();
+		String username = request.getParameter("username1") ;
 
-		rd.forward(request, response);
+		System.out.println(user.getName());
+		out.println("<font size='6' color=\"red\">Ta dah! <br>"+ user.getId()+"<br>" + /*user.getName()*/username + "</font>");
 	}
 
 	/**

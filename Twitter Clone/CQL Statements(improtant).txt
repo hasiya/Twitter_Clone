@@ -1,0 +1,27 @@
+Creating the User Table: 
+	create table users (id timeuuid, user_name varchar, password varchar, name varchar, email varchar, gender varchar, primary key (id, user_name));
+
+Inserting Users to the User Table:
+	insert into users (id, user_name, email, gender, name, password) values (now(), 'RandomGuy', 'r.guy@random.com', 'male', 'Random Guy', '1111');
+	insert into users (id, user_name, email, gender, name, password) values (now(), 'RajithaHasith', 'hasith@test.com', 'male', 'Rajitha Hasith', '1');
+	insert into users (id, user_name, email, gender, name, password) values (now(), 'ToddHardin', 'todd@example.com', 'male', 'Todd Hardin', '111');
+	insert into users (id, user_name, email, gender, name, password) values (now(), 'savini', 'sav@example.com', 'female', 'savini', '11');
+	insert into users (id, user_name, email, gender, name, password) values (now(), 'Nobody', 'no@example.com', 'female', 'Noboday', '1');
+	insert into users (id, user_name, email, gender, name, password) values (now(), 'somebody', 'some@example.com', 'male', 'Somebody', '1');
+
+Creating the Tweets Table: 
+	CREATE TABLE tweets (id timeuuid, body text, date_time timestamp, user_name text, PRIMARY KEY (id));
+
+Inserting Tweets to the tweets Table:
+	insert into tweets (id, user_name, body, date_time) values (now(), 'RajithaHasith', 'Woow Nice Day!', dateof(now()));
+	insert into tweets (id, user_name, body, date_time) values (now(), 'RajithaHasith', 'The Tweet insert working in Cassandra!', dateof(now()));
+	insert into tweets (id, user_name, body, date_time) values (now(), 'RajithaHasith', 'trying to display all my tweets!', dateof(now()));
+	
+Creating the followers Table:
+	CREATE TABLE followers (id timeuuid, follow_user text, user_name text, PRIMARY KEY (id))
+	
+Inserting Followers to the Followers table	
+	insert into followers(id, user_name, follow_user) values (now(), 'RajithaHasith', 'ToddHardin');
+	insert into followers(id, user_name, follow_user) values (now(), 'RajithaHasith', 'RandomGuy');
+	insert into followers(id, user_name, follow_user) values (now(), 'RandomGuy', 'RajithaHasith');
+	insert into followers(id, user_name, follow_user) values (now(), 'RandomGuy', 'savini');

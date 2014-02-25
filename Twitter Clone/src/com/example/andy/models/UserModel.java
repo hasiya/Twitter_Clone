@@ -15,8 +15,6 @@ import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
-
-import com.example.andy.lib.*;
 import com.example.andy.stores.UserStore;;
 
 public class UserModel {
@@ -53,4 +51,35 @@ public class UserModel {
 		session.close();
 		return userList;
 	}
+	
+	public UserStore getUser(String userName){
+		
+		Session session = cluster.connect("keyspace2");
+		UserStore user_store = new UserStore();
+		
+		PreparedStatement statement = session.prepare("SELECT * from users where user_name = \'"+userName+"\';");
+		BoundStatement boundStatement = new BoundStatement(statement);
+		ResultSet rs = session.execute(boundStatement);
+		if (rs.isExhausted()) {
+			System.out.println("No User returned");
+		} else {
+			for (Row row : rs) {
+				
+				user_store.setId(row.getUUID("id"));
+				user_store.setUserName(row.getString("user_name"));
+				user_store.setPassword(row.getString("password"));
+				user_store.setName(row.getString("name"));
+				user_store.setEmail(row.getString("email"));
+				user_store.setGender(row.getString("gender"));
+				
+				System.out.println("Getting result");
+				System.out.println(user_store.getName());
+			//	userList.add(us);
+			}
+		}
+		session.close();
+		
+		return user_store;
+	}
+	
 }
