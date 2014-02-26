@@ -15,6 +15,8 @@ package com.example.andy.models;
 
 import java.awt.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 import com.datastax.driver.core.BoundStatement;
@@ -42,11 +44,13 @@ public class TweetModel {
 
 		ArrayList<String> Followers = new ArrayList<String>();
 		Followers = getFollowersList(userName);
-		
+
 		for (int i = 0; i < Followers.size(); i++) {
-			 String user_name = Followers.get(i);
-			
-			PreparedStatement statement = session.prepare("SELECT * from tweets where user_name = \'" + user_name + "\';");
+			String user_name = Followers.get(i);
+
+			PreparedStatement statement = session
+					.prepare("SELECT * from tweets where user_name = \'"
+							+ user_name + "\';");
 			BoundStatement boundStatement = new BoundStatement(statement);
 			ResultSet rs = session.execute(boundStatement);
 			if (rs.isExhausted()) {
@@ -63,15 +67,23 @@ public class TweetModel {
 				}
 				System.out.println();
 			}
-			
-			
+
 		}
-		
-		/*PreparedStatement statement = session.prepare("SELECT * from tweets");
+		return tweetList;
+
+	}
+
+	public LinkedList<TweetStore> getTweets(String userName) {
+		LinkedList<TweetStore> tweetList = new LinkedList<TweetStore>();
+		Session session = cluster.connect("keyspace2");
+
+		PreparedStatement statement = session
+				.prepare("SELECT * from tweets where user_name = \'"
+						+ userName + "\';");
 		BoundStatement boundStatement = new BoundStatement(statement);
 		ResultSet rs = session.execute(boundStatement);
 		if (rs.isExhausted()) {
-			System.out.println("No Tweets returned - Tweet model(getFollowTweets()");
+			System.out.println("No Tweets returned");
 		} else {
 			for (Row row : rs) {
 				TweetStore ts = new TweetStore();
@@ -80,8 +92,23 @@ public class TweetModel {
 				ts.setUserName(row.getString("user_name"));
 				ts.setDateTime(row.getDate("date_time"));
 				tweetList.add(ts);
+				System.out.println("one Tweet returned");
 			}
-		}*/
+			System.out.println();
+		}
+
+		/*
+		 * PreparedStatement statement =
+		 * session.prepare("SELECT * from tweets"); BoundStatement
+		 * boundStatement = new BoundStatement(statement); ResultSet rs =
+		 * session.execute(boundStatement); if (rs.isExhausted()) {
+		 * System.out.println
+		 * ("No Tweets returned - Tweet model(getFollowTweets()"); } else { for
+		 * (Row row : rs) { TweetStore ts = new TweetStore();
+		 * ts.setId(row.getUUID("id")); ts.setTweetBody(row.getString("body"));
+		 * ts.setUserName(row.getString("user_name"));
+		 * ts.setDateTime(row.getDate("date_time")); tweetList.add(ts); } }
+		 */
 		session.close();
 		return tweetList;
 	}
@@ -93,19 +120,51 @@ public class TweetModel {
 		Session session = cluster.connect("keyspace2");
 
 		PreparedStatement statement = session
-				.prepare("SELECT follow_user from followers where user_name=\'" + userName + "\';");
+				.prepare("SELECT follow_user from followers where user_name=\'"
+						+ userName + "\';");
 		BoundStatement boundStatement = new BoundStatement(statement);
 		ResultSet rs = session.execute(boundStatement);
 		if (rs.isExhausted()) {
-			System.out.println("No Followers Returned - Tweet model(GetFollowersList()");
+			System.out
+					.println("No Followers Returned - Tweet model(GetFollowersList()");
 		} else {
 			for (Row row : rs) {
 
 				FollowersList.add(row.getString("follow_user"));
-				System.out.println(row.getString("follow_user")+" - Tweet model(GetFollowersList()");
+				System.out.println(row.getString("follow_user")
+						+ " - Tweet model(GetFollowersList()");
 			}
 		}
-		
+
 		return FollowersList;
 	}
+
+	public LinkedList<TweetStore> sortTweets(LinkedList<TweetStore> tweets) {
+
+		LinkedList<TweetStore> SortedTweets = new LinkedList<>();
+
+		System.out.println("in the Sort Method.");
+
+		Collections.sort(tweets, new Comparator<TweetStore>() {
+			@Override
+			public int compare(TweetStore tweets1, TweetStore tweets2) {
+				return tweets2.getDateTime().compareTo(tweets1.getDateTime());
+			}
+
+		});
+
+		System.out.println(tweets.size());
+		for (int i = 0; i < tweets.size(); i++) {
+			TweetStore tmpTweet = tweets.get(i);
+			System.out.println(tmpTweet.getTweetBody());
+			SortedTweets.add(tmpTweet);
+			// System.out.println(SortedTweets.get(i).getTweetBody());
+		}
+
+		System.out.println("in the for loop");
+		// System.out.println(Arrays.toString(SortedTweets.toArray()));
+
+		return SortedTweets;
+	}
+
 }

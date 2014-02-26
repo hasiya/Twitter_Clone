@@ -29,9 +29,9 @@
 						</form>
 					</td>
 					<td width="25%" align="center">
-						<form action="Profile" id="profile" >
+						<form action="Profile/<%=user.getUserName()%>" id="profile" >
 							<a href="javascript:;" onclick="document.getElementById(profile)"  > </a>
-							<input name="userName" id="profile_btn" type="submit"  value="Profile - <%=user.getName()%>">
+							<input id="profile_btn" type="submit"  value="Profile - <%=user.getName()%>">
 						</form>
 					</td>
 					<td width="35%" align="right"><input id="search_bar"
