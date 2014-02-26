@@ -5,14 +5,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Twitter - Welcome</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/signin.css" rel="stylesheet">
 </head>
 <body>
-	<form action="Home" method="post">
+<div class="container">
+	<form class="form-signin" action="Home" method="post">
 
-		UserName: <input type="text" name="usernameTxt" value="RajithaHasith">
-		Password: <input type="password" name="passwordTxt" value="1">
-		<input type="submit"><br> <label></label>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input name="usernameTxt" type="text" class="form-control" placeholder="User Name" required autofocus>
+        <input name="passwordTxt" type="password" class="form-control" placeholder="Password" required>
 
-	</form>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+	</div>
 </body>
 </html>

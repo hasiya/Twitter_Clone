@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css\page_header.CSS" type="text/css" />
 
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 
 </head>
 
@@ -42,7 +45,6 @@
 			</table>
 		</center>
 	</div>
-	<br>
 	<br>
 </body>
 </html>

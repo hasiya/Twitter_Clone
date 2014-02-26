@@ -7,6 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Tweeter</title>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
 </head>
 <body>
 	<jsp:include page="page_header.jsp" />
@@ -33,7 +38,7 @@
 	%>
 	<form action="Profile" id="profile" method="get">
 		<h5>
-			User: <a href="/Tweet/Profile"
+			User: <a href="<%=request.getContextPath() %>/Profile/<%=ts.getUserName()%>"
 				onclick="document.getElementById(profile)" name="username1"><%=ts.getUserName()%></a>
 		</h5>
 

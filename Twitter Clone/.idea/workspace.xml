@@ -23,10 +23,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="bootstrap.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/css/bootstrap.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1829" column="17" selection-start="32684" selection-end="32684" vertical-scroll-proportion="0.33146068" vertical-offset="30975" max-vertical-offset="98447">
+            <state line="1829" column="17" selection-start="32684" selection-end="32684" vertical-scroll-proportion="0.0" vertical-offset="30975" max-vertical-offset="98447">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RenderTweets.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/RenderTweets.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="22" selection-start="382" selection-end="382" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="1020">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RenderProfile.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="4" selection-start="492" selection-end="492" vertical-scroll-proportion="0.6443149" vertical-offset="0" max-vertical-offset="1275">
               <folding />
             </state>
           </provider>
@@ -67,6 +85,7 @@
         <option value="$PROJECT_DIR$/WebContent/css/signin.css" />
         <option value="$PROJECT_DIR$/WebContent/css/bootstrap-theme.min.css" />
         <option value="$PROJECT_DIR$/WebContent/css/dashboard.css" />
+        <option value="$PROJECT_DIR$/WebContent/RenderProfile.jsp" />
       </list>
     </option>
   </component>
@@ -447,7 +466,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1829" column="17" selection-start="32684" selection-end="32684" vertical-scroll-proportion="0.33146068" vertical-offset="30975" max-vertical-offset="98447">
+        <state line="1829" column="17" selection-start="32684" selection-end="32684" vertical-scroll-proportion="0.0" vertical-offset="30975" max-vertical-offset="98447">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/RenderTweets.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="22" selection-start="382" selection-end="382" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="4" selection-start="492" selection-end="492" vertical-scroll-proportion="0.6443149" vertical-offset="0" max-vertical-offset="1275">
           <folding />
         </state>
       </provider>

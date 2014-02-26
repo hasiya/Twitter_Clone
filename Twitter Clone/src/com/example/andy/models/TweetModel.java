@@ -80,8 +80,9 @@ public class TweetModel {
 		PreparedStatement statement = session
 				.prepare("SELECT * from tweets where user_name = ?;");
 		BoundStatement boundStatement = new BoundStatement(statement);
-		ResultSet rs = session.execute(boundStatement);
 		boundStatement.bind(userName);
+		ResultSet rs = session.execute(boundStatement);
+		
 		if (rs.isExhausted()) {
 			System.out.println("No Tweets returned");
 		} else {
