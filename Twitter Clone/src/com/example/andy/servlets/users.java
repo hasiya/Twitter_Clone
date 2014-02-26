@@ -53,6 +53,8 @@ public class users extends HttpServlet {
 		return null;
 	}
 
+	int R = 0;
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -83,19 +85,22 @@ public class users extends HttpServlet {
 		
 		System.out.println("in the user servlet - tweets sorted?");
 		
-		session.setAttribute("user", user);
+		//session.setAttribute("user", user);
 		
 		request.setAttribute("Tweets", sortedtTweetList); //Set a bean with the list in it
 		
-		response.sendRedirect("Profile.jsp");
+		/*response.sendRedirect("Profile.jsp");*/
 		
 		/*PrintWriter out = response.getWriter();
 		out.println("<font size='6' color=\"red\">Ta dah! <br>"+url[3]+"<br></font>");*/
 		
 		
-//		RequestDispatcher dispatcher =  request.getRequestDispatcher("Profile.jsp");
-//		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/RenderProfile.jsp");
+		dispatcher.forward(request, response);
 
+		
+		
+		
 		/*
 		 * System.out.println(user.getName());
 		 out.println("<font size='6' color=\"red\">Ta dah! <br>"+

@@ -15,7 +15,6 @@
 	UserStore user = (UserStore) session.getAttribute("user");
 	System.out.println("in the header page user name: "
 			+ user.getName());
-	session.setAttribute("user", user);
 %>
 
 <body>
@@ -24,12 +23,12 @@
 			<table width="90%" border="2">
 				<tr>
 					<td width="25%" align="center">
-						<form action="Tweets">
+						<form action="<%=request.getContextPath() %>/Tweets">
 							<input id="nav_btn" type="submit" value="Home">
 						</form>
 					</td>
 					<td width="25%" align="center">
-						<form action="Profile/<%=user.getUserName()%>" id="profile" >
+						<form action="<%=request.getContextPath() %>/Profile/<%=user.getUserName()%>" id="profile" >
 							<a href="javascript:;" onclick="document.getElementById(profile)"  > </a>
 							<input id="profile_btn" type="submit"  value="Profile - <%=user.getName()%>">
 						</form>

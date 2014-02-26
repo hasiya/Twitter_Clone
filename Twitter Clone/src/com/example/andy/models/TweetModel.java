@@ -49,9 +49,9 @@ public class TweetModel {
 			String user_name = Followers.get(i);
 
 			PreparedStatement statement = session
-					.prepare("SELECT * from tweets where user_name = \'"
-							+ user_name + "\';");
+					.prepare("SELECT * from tweets where user_name = ?;");
 			BoundStatement boundStatement = new BoundStatement(statement);
+			boundStatement.bind(user_name);
 			ResultSet rs = session.execute(boundStatement);
 			if (rs.isExhausted()) {
 				System.out.println("No Tweets returned");
@@ -78,10 +78,10 @@ public class TweetModel {
 		Session session = cluster.connect("keyspace2");
 
 		PreparedStatement statement = session
-				.prepare("SELECT * from tweets where user_name = \'"
-						+ userName + "\';");
+				.prepare("SELECT * from tweets where user_name = ?;");
 		BoundStatement boundStatement = new BoundStatement(statement);
 		ResultSet rs = session.execute(boundStatement);
+		boundStatement.bind(userName);
 		if (rs.isExhausted()) {
 			System.out.println("No Tweets returned");
 		} else {
@@ -120,9 +120,9 @@ public class TweetModel {
 		Session session = cluster.connect("keyspace2");
 
 		PreparedStatement statement = session
-				.prepare("SELECT follow_user from followers where user_name=\'"
-						+ userName + "\';");
+				.prepare("SELECT follow_user from followers where user_name= ?;");
 		BoundStatement boundStatement = new BoundStatement(statement);
+		boundStatement.bind(userName);
 		ResultSet rs = session.execute(boundStatement);
 		if (rs.isExhausted()) {
 			System.out

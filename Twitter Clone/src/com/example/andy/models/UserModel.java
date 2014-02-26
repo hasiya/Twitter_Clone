@@ -57,8 +57,9 @@ public class UserModel {
 		Session session = cluster.connect("keyspace2");
 		UserStore user_store = new UserStore();
 		
-		PreparedStatement statement = session.prepare("SELECT * from users where user_name = \'"+userName+"\';");
+		PreparedStatement statement = session.prepare("SELECT * from users where user_name = ?;");
 		BoundStatement boundStatement = new BoundStatement(statement);
+		boundStatement = boundStatement.bind(userName);
 		ResultSet rs = session.execute(boundStatement);
 		if (rs.isExhausted()) {
 			System.out.println("No User returned");
