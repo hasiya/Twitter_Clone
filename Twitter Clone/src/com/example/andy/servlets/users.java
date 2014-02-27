@@ -61,7 +61,6 @@ public class users extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
 		String[] url = request.getRequestURI().split("/");
 
 		System.out.println("in the user servlet");
@@ -117,6 +116,20 @@ public class users extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		UserStore user = (UserStore)request.getSession().getAttribute("user");
+		
+		if(!(request.getParameter("tweet").isEmpty())){
+
+			TweetModel tm = new TweetModel();
+			tm.setCluster(cluster);
+			TweetStore ts = new TweetStore(); 
+			ts.setUserName(user.getUserName());
+			ts.setTweetBody(request.getParameter("tweet"));
+
+			tm.postTweet(ts);
+
+			this.doGet(request, response);
+		}
 	}
 
 }

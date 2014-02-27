@@ -24,7 +24,7 @@ import com.example.andy.stores.*;
 /**
  * Servlet implementation class Login
  */
-@WebServlet(urlPatterns = { "/Home" })
+@WebServlet(urlPatterns = { "/Home" , "/Register" })
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Cluster cluster;
@@ -58,6 +58,19 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		String[] url = request.getRequestURI().split("/");
+		
+		if((url[(url.length)-1]).equals("Home")){
+			userLogin(request,response);
+		}
+		else if(((url[(url.length)-1]).equals("Register"))){
+			userRegister(request, response);
+		}
+	}
+	
+	protected void userLogin(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
 
 		UserModel um = new UserModel();
@@ -80,7 +93,7 @@ public class Login extends HttpServlet {
 			LinkedList<TweetStore> tweetList = tm.getFollowTweets(uStore
 					.getUserName());
 
-			LinkedList<TweetStore> sortedtTweetList = sortTweets(tweetList);
+			LinkedList<TweetStore> sortedtTweetList = tm.sortTweets(tweetList);
 
 			session.setAttribute("user", uStore);
 
@@ -103,6 +116,71 @@ public class Login extends HttpServlet {
 			out.println("<font size='6' color=\"red\">Loggin Unsuccess</font>");
 		}
 	}
+	
+	protected void userRegister(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		String name_txt = request.getParameter("name");
+		String userName_txt = request.getParameter("userName");
+		String email_txt = request.getParameter("email");
+		String password_txt = request.getParameter("password");
+		String gender_rBtn = request.getParameter("gender");
+		
+		UserStore user = new UserStore();
+		user.setName(name_txt);
+		user.setUserName(userName_txt);
+		user.setEmail(email_txt);
+		user.setPassword(password_txt);
+		user.setGender(gender_rBtn);
+		
+		UserModel um = new UserModel();
+		um.setCluster(cluster);
+		um.RegisterUser(user);
+
+		HttpSession session = request.getSession();
+
+		um.setCluster(cluster);
+		LinkedList<UserStore> userList = um.getUsers();
+
+		if (checkLogin(userList, user.getUserName(), user.getPassword())) {
+			System.out.println("check success");
+			// response.setContentType("text/html");
+			UserStore uStore = um.getUser(user.getUserName());
+
+			System.out.println();
+			System.out.println(uStore.getName());
+			System.out.println();
+
+			TweetModel tm = new TweetModel();
+			tm.setCluster(cluster);
+			LinkedList<TweetStore> tweetList = tm.getFollowTweets(uStore
+					.getUserName());
+
+			LinkedList<TweetStore> sortedtTweetList = tm.sortTweets(tweetList);
+
+			session.setAttribute("user", uStore);
+
+			request.setAttribute("Tweets", sortedtTweetList); // Set a bean with
+																// the list in
+																// it
+
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("RenderTweets.jsp");
+			dispatcher.forward(request, response);
+
+			// PrintWriter out = response.getWriter();
+			// out.println("<font size='6' color=\"green\">Loggin Success</font>");
+		} else {
+
+			System.out.println("check not success");
+			response.setContentType("text/html");
+
+			PrintWriter out = response.getWriter();
+			out.println("<font size='6' color=\"red\">Loggin Unsuccess</font>");
+		}
+	}
+	
+	
 
 	protected Boolean checkLogin(LinkedList<UserStore> uList, String username,
 			String password) {
@@ -136,33 +214,4 @@ public class Login extends HttpServlet {
 		return login;
 
 	}
-
-	public LinkedList<TweetStore> sortTweets(LinkedList<TweetStore> tweets) {
-
-		LinkedList<TweetStore> SortedTweets = new LinkedList<>();
-
-		System.out.println("in the Sort Method.");
-
-		Collections.sort(tweets, new Comparator<TweetStore>() {
-			@Override
-			public int compare(TweetStore tweets1, TweetStore tweets2) {
-				return tweets2.getDateTime().compareTo(tweets1.getDateTime());
-			}
-
-		});
-
-		System.out.println(tweets.size());
-		for (int i = 0; i < tweets.size(); i++) {
-			TweetStore tmpTweet = tweets.get(i);
-			System.out.println(tmpTweet.getTweetBody());
-			SortedTweets.add(tmpTweet);
-			// System.out.println(SortedTweets.get(i).getTweetBody());
-		}
-
-		System.out.println("in the for loop");
-		// System.out.println(Arrays.toString(SortedTweets.toArray()));
-
-		return SortedTweets;
-	}
-
 }

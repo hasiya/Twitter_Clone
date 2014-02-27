@@ -42,7 +42,6 @@ public class Tweet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		String args[]=Convertors.SplitRequestPath(request);
-		Login login = new Login();
 		
 		HttpSession session = request.getSession();
 		UserStore user = (UserStore)session.getAttribute("user");
@@ -51,7 +50,7 @@ public class Tweet extends HttpServlet {
 		tm.setCluster(cluster);
 		LinkedList<TweetStore> tweetList = tm.getFollowTweets(user.getUserName());
 		
-		LinkedList<TweetStore> sortedtTweetList =  login.sortTweets(tweetList);
+		LinkedList<TweetStore> sortedtTweetList =  tm.sortTweets(tweetList);
 		
 		
 		request.setAttribute("Tweets", sortedtTweetList); //Set a bean with the list in it

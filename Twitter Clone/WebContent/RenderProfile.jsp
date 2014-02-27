@@ -20,11 +20,15 @@ textarea {
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
+<%
+	UserStore user = (UserStore) session.getAttribute("user");
+%>
+
 	<jsp:include page="page_header.jsp" />
 
-	<form action="">
-		<textarea class="form-control" placeholder="Tweet... (150 Characters only!)" rows="3" cols="50" maxlength="150"></textarea>
-		<button class="btn btn-default" type="button">Post!</button>
+	<form action="<%=request.getContextPath() %>/Profile/<%=user.getUserName()%>">
+		<textarea class="form-control" placeholder="Tweet... (150 Characters only!)" rows="3" cols="50" maxlength="150" name="tweet"></textarea>
+		<button class="btn btn-default" type="submit">Post!</button>
 
 	</form>
 

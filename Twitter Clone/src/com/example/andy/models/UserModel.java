@@ -27,6 +27,22 @@ public class UserModel {
 		this.cluster=cluster;
 	}
 
+	public void RegisterUser(UserStore user)
+	{
+		Boolean register = false;
+		Session session = cluster.connect("keyspace2");
+		PreparedStatement statement = session.prepare("insert into users (id, user_name, email, gender, name, password) values (now(), ?, ?, ?, ?, ?);");
+		BoundStatement boundStatement = new BoundStatement(statement);
+
+		boundStatement.bind(user.getUserName(), user.getEmail(), user.getGender(), user.getName(), user.getPassword()); 
+
+		session.execute(boundStatement);
+		if(session.execute(boundStatement).isFullyFetched());
+		{
+			register = true;
+		}
+	}
+	
 	public LinkedList<UserStore> getUsers() {
 		LinkedList<UserStore> userList = new LinkedList<UserStore>();
 		Session session = cluster.connect("keyspace2");

@@ -11,15 +11,22 @@
 <link href="css/signin.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-	<form class="form-signin" action="Home" method="post">
+	<div class="container">
+		<form class="form-signin" action="Home" method="post">
 
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input name="usernameTxt" type="text" class="form-control" placeholder="User Name" required autofocus>
-        <input name="passwordTxt" type="password" class="form-control" placeholder="Password" required>
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input name="usernameTxt" type="text" class="form-control"
+				placeholder="User Name" required autofocus> <input
+				name="passwordTxt" type="password" class="form-control"
+				placeholder="Password" required>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+				in</button>
+		</form>
+		<form class="form-signin" action="UserRegister.jsp">
+			<h3 class="form-signin-heading">Or register now!</h3>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+		</form>
 
 	</div>
 </body>

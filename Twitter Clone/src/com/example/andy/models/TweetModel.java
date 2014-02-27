@@ -38,6 +38,19 @@ public class TweetModel {
 		this.cluster = cluster;
 	}
 
+	
+	public void postTweet(TweetStore ts)
+	{
+		Session session = cluster.connect("keyspace2");
+		PreparedStatement statement = session.prepare("insert into tweets (id, user_name, body, date_time) values (now(), ?, ?, dateof(now()));");
+		BoundStatement boundStatement = new BoundStatement(statement);
+
+		boundStatement.bind(ts.getUserName(), ts.getTweetBody());
+
+		session.execute(boundStatement);
+		session.close();
+	}
+	
 	public LinkedList<TweetStore> getFollowTweets(String userName) {
 		LinkedList<TweetStore> tweetList = new LinkedList<TweetStore>();
 		Session session = cluster.connect("keyspace2");
@@ -69,7 +82,9 @@ public class TweetModel {
 			}
 
 		}
+		session.close();
 		return tweetList;
+		
 
 	}
 
@@ -136,7 +151,7 @@ public class TweetModel {
 						+ " - Tweet model(GetFollowersList()");
 			}
 		}
-
+		session.close();
 		return FollowersList;
 	}
 
