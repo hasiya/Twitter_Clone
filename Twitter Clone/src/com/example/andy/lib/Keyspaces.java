@@ -16,21 +16,18 @@ public final class Keyspaces {
 	public static void SetUpKeySpaces(Cluster c){
 		try{
 			//Add some keyspaces here
-		String createkeyspace="create keyspace if not exists keyspace2  WITH replication = {'class':'SimpleStrategy', 'replication_factor':1}";
-		String CreateTweetTable = "CREATE TABLE if not exists Tweets ("+
-				"user varchar,"+
-				" interaction_time timeuuid,"+
-				" tweet varchar,"+
-				" PRIMARY KEY (user,interaction_time)"+
-				") WITH CLUSTERING ORDER BY (interaction_time DESC);";
+		String createkeyspace="create keyspace if not exists tcolne  WITH replication = {'class':'SimpleStrategy', 'replication_factor':1}";
+		String CreateUserTable = "CREATE TABLE if not exists users (id timeuuid, user_name varchar, password varchar, name varchar, email varchar, gender varchar, primary key (id, user_name));";
+		String CreateTweetTable = "CREATE TABLE if not exists tweets (id timeuuid, body text, date_time timestamp, user_name text, PRIMARY KEY (id));";
+		String CreateFollowerTable = "CREATE TABLE if not exists followers (id timeuuid, follow_user text, user_name text, PRIMARY KEY (id));";
+		
 		Session session = c.connect();
 		try{
 			PreparedStatement statement = session
 					.prepare(createkeyspace);
 			BoundStatement boundStatement = new BoundStatement(
 					statement);
-			ResultSet rs = session
-					.execute(boundStatement);
+			session.execute(boundStatement);
 
 		}catch(Exception et){
 			System.out.println("Can't create keyspace2 "+et);
@@ -42,10 +39,15 @@ public final class Keyspaces {
 		System.out.println(""+CreateTweetTable);
 
 		try{
-			SimpleStatement cqlQuery = new SimpleStatement(CreateTweetTable);
+			SimpleStatement cqlQuery = new SimpleStatement(CreateUserTable);
+			session.execute(cqlQuery);
+			cqlQuery = new SimpleStatement(CreateTweetTable);
+			session.execute(cqlQuery);
+			cqlQuery = new SimpleStatement(CreateFollowerTable);
+			System.out.println("all tables created if not exist"); 
 			session.execute(cqlQuery);
 		}catch(Exception et){
-			System.out.println("Can't create tweet table "+et);
+			System.out.println("Can't create DB "+et);
 		}
 		session.close();
 

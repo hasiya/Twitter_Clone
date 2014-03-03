@@ -18,7 +18,7 @@ Inserting Tweets to the tweets Table:
 	insert into tweets (id, user_name, body, date_time) values (now(), 'RajithaHasith', 'trying to display all my tweets!', dateof(now()));
 	
 Creating the followers Table:
-	CREATE TABLE followers (id timeuuid, follow_user text, user_name text, PRIMARY KEY (id))
+	CREATE TABLE followers (id timeuuid, follow_user text, user_name text, PRIMARY KEY (id));
 	
 Inserting Followers to the Followers table	
 	insert into followers(id, user_name, follow_user) values (now(), 'RajithaHasith', 'ToddHardin');

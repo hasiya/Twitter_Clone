@@ -31,13 +31,13 @@
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<%=request.getContextPath()%>/Tweets">Twitter</a>
+				<a class="navbar-brand" href="<%=request.getContextPath()%>/Tweets"><font face="Andy" size="5px">T_Clone</font></a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a
-						href="<%=request.getContextPath()%>/Profile/<%=user.getUserName()%>">Profile
-							- <%=user.getName()%></a></li>
+						href="<%=request.getContextPath()%>/Profile/<%=user.getUserName()%>"><font size="3px">Profile
+							- <%=user.getName()%></font></a></li>
 				</ul>
 				<form action="<%=request.getContextPath()%>/Logout.jsp" class="navbar-form navbar-right" role="form">
 					<button type="submit" class="btn btn-warning">Log out</button>

@@ -35,7 +35,7 @@
       <file leaf-file-name="RenderTweets.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/RenderTweets.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="22" selection-start="382" selection-end="382" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="1020">
+            <state line="8" column="22" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1241">
               <folding />
             </state>
           </provider>
@@ -44,8 +44,10 @@
       <file leaf-file-name="RenderProfile.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="4" selection-start="492" selection-end="492" vertical-scroll-proportion="0.6443149" vertical-offset="0" max-vertical-offset="1275">
-              <folding />
+            <state line="23" column="30" selection-start="781" selection-end="781" vertical-scroll-proportion="0.1712963" vertical-offset="317" max-vertical-offset="1394">
+              <folding>
+                <marker date="1393812060835" expanded="true" signature="404:446" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,8 +94,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -179,12 +181,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Uni DB Assignment/Learning/Tut_mysite" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -276,6 +278,9 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -297,9 +302,6 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -376,7 +378,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -384,10 +386,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25075758" sideWeight="0.6706282" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25418276" sideWeight="0.67128986" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293718" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -411,43 +413,72 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebContent/css/page_header.CSS">
+    <entry file="file://$PROJECT_DIR$/WebContent/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="20" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="544">
+        <state line="1829" column="17" selection-start="32684" selection-end="32684" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="98447">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/page_header.jsp">
+    <entry file="file://$PROJECT_DIR$/WebContent/RenderTweets.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="46" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="918">
+        <state line="8" column="22" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1241">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="4" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1496">
+          <folding>
+            <marker date="1393812060835" expanded="true" signature="404:446" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/bootstrap-theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6001">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/page_header.CSS">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="20" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="544" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/page_header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="46" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/Index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="8" selection-start="74" selection-end="74" vertical-scroll-proportion="0.049418606" vertical-offset="0" max-vertical-offset="442" />
-      </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="8" selection-start="74" selection-end="74" vertical-scroll-proportion="0.049418606" vertical-offset="0" max-vertical-offset="442" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/css/page_header.CSS">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="21" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <folding />
-        </state>
+        <state line="17" column="21" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/page_header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="46" selection-start="1068" selection-end="1068" vertical-scroll-proportion="-2.5769231" vertical-offset="409" max-vertical-offset="884">
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="46" selection-start="1068" selection-end="1068" vertical-scroll-proportion="-2.5769231" vertical-offset="409" max-vertical-offset="884" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/css/bootstrap.min.css">
@@ -473,15 +504,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/RenderTweets.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="382" selection-end="382" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="1020">
+        <state line="8" column="22" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1241">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="4" selection-start="492" selection-end="492" vertical-scroll-proportion="0.6443149" vertical-offset="0" max-vertical-offset="1275">
-          <folding />
+        <state line="23" column="30" selection-start="781" selection-end="781" vertical-scroll-proportion="0.1712963" vertical-offset="317" max-vertical-offset="1394">
+          <folding>
+            <marker date="1393812060835" expanded="true" signature="404:446" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

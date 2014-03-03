@@ -11,61 +11,77 @@
 </head>
 <body>
 	<jsp:include page="page_header.jsp" />
-	<%
-	System.out.println("In render");
-	List<TweetStore> lTweet = (List<TweetStore>) request
-			.getAttribute("Tweets");
-	
-	Boolean isFollowing = (Boolean)request.getAttribute("isFollowing");
-	UserStore user = (UserStore) request.getAttribute("user");
-	%>
-	<h2><%= user.getName() %></h2><h3>(<%=user.getUserName() %>)</h3>
-	
-	<h4>Tweets</h4>
-	
-	<%if(isFollowing){ %>
-	<form action="<%=request.getContextPath() %>/Unfollow/<%=user.getUserName() %>" method="get">
-	<button type="submit" name="unfollowBtn"  value="unfollow" class="btn btn-danger">Unfollow</button>
-	</form>
-	<%} 
-	else{%>
-	<form action="<%=request.getContextPath() %>/Follow/<%=user.getUserName() %>" method="get" >
-	<button type="submit" name="followBtn"  value="follow" class="btn btn-primary">Follow</button>
-	</form>
-	
-	
-	<%}
-	
-	if (lTweet.isEmpty()){
-	%>
 
-	<p>No Tweets found</p>
-	
-	<%
-		} else {
-	%>
+	<div class="container">
+		<%
+			System.out.println("In render");
+			List<TweetStore> lTweet = (List<TweetStore>) request
+					.getAttribute("Tweets");
+
+			Boolean isFollowing = (Boolean) request.getAttribute("isFollowing");
+			UserStore user = (UserStore) request.getAttribute("user");
+		%>
+		<h2><%=user.getName()%></h2>
+		<h3>
+			(<%=user.getUserName()%>)
+		</h3>
+
+		<%
+			if (isFollowing) {
+		%>
+		<form
+			action="<%=request.getContextPath()%>/Unfollow/<%=user.getUserName()%>"
+			method="get">
+			<button type="submit" name="unfollowBtn" value="unfollow"
+				class="btn btn-danger">Unfollow</button>
+		</form>
+		<%
+			} else {
+		%>
+		<form
+			action="<%=request.getContextPath()%>/Follow/<%=user.getUserName()%>"
+			method="get">
+			<button type="submit" name="followBtn" value="follow"
+				class="btn btn-primary">Follow</button>
+		</form>
+
+		<%
+			}%>
+			
+		<br>
+
+		<h4><u><b>Tweets</b></u></h4>
+		
+		<%
+			if (lTweet.isEmpty()) {
+		%>
+
+		<p>No Tweets found</p>
+
+		<%
+			} else {
+		%>
 
 
-	<%
-		Iterator<TweetStore> iterator;
+		<%
+			Iterator<TweetStore> iterator;
 
-			iterator = lTweet.iterator();
-			while (iterator.hasNext()) {
-				TweetStore ts = (TweetStore) iterator.next();
-	%>
+				iterator = lTweet.iterator();
+				while (iterator.hasNext()) {
+					TweetStore ts = (TweetStore) iterator.next();
+		%>
 		<h5>
-			User: <%=ts.getUserName()%>
-		</h5>
-
-		<h5>
-			Tweet:
+			<%=ts.getUserName()%>:
 			<%=ts.getTweetBody()%>
 		</h5>
-		<h6><%=ts.getDateTime()%></h6>
-		<hr>	
-	<%
-		}
-		}	
-	%>
+		<h6>
+			On:
+			<%=ts.getDateTime()%></h6>
+		<hr>
+		<%
+			}
+			}
+		%>
+	</div>
 </body>
 </html>

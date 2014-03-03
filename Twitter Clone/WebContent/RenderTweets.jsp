@@ -16,51 +16,53 @@
 </head>
 <body>
 	<jsp:include page="page_header.jsp" />
-	<h1>Tweets</h1>
-	<%
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		System.out.println("In render");
-		List<TweetStore> lTweet = (List<TweetStore>) request
-				.getAttribute("Tweets");
-		if (lTweet == null) {
-	%>
+	<div class="container">
+		<h1>Tweets</h1>
+		<%
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			System.out.println("In render");
+			List<TweetStore> lTweet = (List<TweetStore>) request
+					.getAttribute("Tweets");
+			if (lTweet == null) {
+		%>
 
-	<p>No Tweet found</p>
-	<%
-		} else {
-	%>
+		<p>No Tweet found</p>
+		<%
+			} else {
+		%>
 
 
-	<%
-		Iterator<TweetStore> iterator;
+		<%
+			Iterator<TweetStore> iterator;
 
-			iterator = lTweet.iterator();
-			while (iterator.hasNext()) {
-				TweetStore ts = (TweetStore) iterator.next();
-	%>
-	<%-- User: <a href="<%=request.getContextPath() %>/Profile/<%=ts.getUserName()%>"
+				iterator = lTweet.iterator();
+				while (iterator.hasNext()) {
+					TweetStore ts = (TweetStore) iterator.next();
+		%>
+		<%-- User: <a href="<%=request.getContextPath() %>/Profile/<%=ts.getUserName()%>"
 				onclick="document.getElementById(profile)" name="username1"><%=ts.getUserName()%></a> --%>
 
 
 
-	<h5>
-		<a href="<%=request.getContextPath()%>/Profile/<%=ts.getUserName()%>"><%=ts.getUserName()%></a>:
-		<%=ts.getTweetBody()%>
-	</h5>
-	<h6>
-		On:
-		<%=sdf.format(ts.getDateTime())%></h6>
+		<h5>
+			<a href="<%=request.getContextPath()%>/Profile/<%=ts.getUserName()%>"><%=ts.getUserName()%></a>:
+			<%=ts.getTweetBody()%>
+		</h5>
+		<h6>
+			On:
+			<%=sdf.format(ts.getDateTime())%></h6>
 
-	<%-- <h5>
+		<%-- <h5>
 			Tweet:
 			<%=ts.getTweetBody()%>
 		</h5> --%>
-	<hr>
+		<hr>
 
-	<%-- <a href="/Tweet/<%=ts.getUserName() %>" ><%=ts.getTweetBody() %></a><br/> --%>
-	<%
-		}
-		}
-	%>
+		<%-- <a href="/Tweet/<%=ts.getUserName() %>" ><%=ts.getTweetBody() %></a><br/> --%>
+		<%
+			}
+			}
+		%>
+	</div>
 </body>
 </html>

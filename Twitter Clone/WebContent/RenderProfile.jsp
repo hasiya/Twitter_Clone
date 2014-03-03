@@ -18,63 +18,60 @@ textarea {
 <link rel="stylesheet" type="text/css" href="<c:url value="css/bootstrap-theme.css" /> "/>
 <link rel="stylesheet" type="text/css" href="<c:url value="css/bootstrap-theme.min.css" /> "/> --%>
 
-	
+
 </head>
 <body>
 	<jsp:include page="page_header.jsp" />
+	<div class="container">
+		<%
+			UserStore user = (UserStore) session.getAttribute("user");
+		%>
+		<br>
+		<form
+			action="<%=request.getContextPath()%>/Profile/<%=user.getUserName()%>"
+			method="post">
+			<textarea class="form-control"
+				placeholder="Tweet... (150 Characters only!)" rows="3" cols="50"
+				maxlength="150" name="tweet"></textarea>
+			<button class="btn btn-success " type="submit">Post!</button>
 
-<%
-UserStore user = (UserStore)session.getAttribute("user");
-%>
-
-	<form action="<%=request.getContextPath() %>/Profile/<%=user.getUserName()%>" method="post">
-		<textarea class="form-control" placeholder="Tweet... (150 Characters only!)" rows="3" cols="50" maxlength="150" name="tweet"></textarea>
-		<button class="btn btn-default" type="submit">Post!</button>
-
-	</form>
-
-
-	<h1>Tweets</h1>
-	<%
-		System.out.println("In render - user Profile");
-		List<TweetStore> lTweet = (List<TweetStore>) request
-				.getAttribute("Tweets");
-		if (lTweet == null) {
-	%>
-
-	<p>No Tweet found</p>
-	<%
-		} else {
-	%>
+		</form>
 
 
-	<%
-		Iterator<TweetStore> iterator;
+		<h1>Tweets</h1>
+		<%
+			System.out.println("In render - user Profile");
+			List<TweetStore> lTweet = (List<TweetStore>) request
+					.getAttribute("Tweets");
+			if (lTweet == null) {
+		%>
 
-			iterator = lTweet.iterator();
-			while (iterator.hasNext()) {
-				TweetStore ts = (TweetStore) iterator.next();
-	%>
+		<p>No Tweet found</p>
+		<%
+			} else {
+		%>
+		<%
+			Iterator<TweetStore> iterator;
+
+				iterator = lTweet.iterator();
+				while (iterator.hasNext()) {
+					TweetStore ts = (TweetStore) iterator.next();
+		%>
 		<h5>
-			User: <%=ts.getUserName()%>
-		</h5>
-
-		<h5>
-			Tweet:
+			<%=ts.getUserName()%>:
 			<%=ts.getTweetBody()%>
 		</h5>
-		<h6><%=ts.getDateTime()%></h6>
+		<h6>
+			On:
+			<%=ts.getDateTime()%></h6>
 		<hr>
 
-	<%-- <a href="/Tweet/<%=ts.getUserName() %>" ><%=ts.getTweetBody() %></a><br/> --%>
-	
-	<%
-		}
-		}
-		
-		
-	%>
-	
-	<%=request.getContextPath()%>
+		<%-- <a href="/Tweet/<%=ts.getUserName() %>" ><%=ts.getTweetBody() %></a><br/> --%>
+
+		<%
+			}
+			}
+		%>
+	</div>
 </body>
 </html>
