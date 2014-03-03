@@ -25,3 +25,9 @@ Inserting Followers to the Followers table
 	insert into followers(id, user_name, follow_user) values (now(), 'RajithaHasith', 'RandomGuy');
 	insert into followers(id, user_name, follow_user) values (now(), 'RandomGuy', 'RajithaHasith');
 	insert into followers(id, user_name, follow_user) values (now(), 'RandomGuy', 'savini');
+	
+Indexes:
+	CREATE INDEX user_follow ON followers (user_name);
+	CREATE INDEX user_tweets ON tweets (user_name);
+	CREATE INDEX user_index ON users (user_name);
+	CREATE INDEX name_index ON users (name);

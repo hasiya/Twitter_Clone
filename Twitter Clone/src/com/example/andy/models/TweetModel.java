@@ -131,6 +131,7 @@ public class TweetModel {
 
 	public ArrayList<String> getFollowersList(String userName) {
 
+		System.out.println("getting Follower's list");
 		ArrayList<String> FollowersList = new ArrayList<String>();
 
 		Session session = cluster.connect("keyspace2");
@@ -152,6 +153,7 @@ public class TweetModel {
 			}
 		}
 		session.close();
+		System.out.println("got Follower's list");
 		return FollowersList;
 	}
 

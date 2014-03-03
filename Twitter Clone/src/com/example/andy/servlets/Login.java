@@ -108,12 +108,14 @@ public class Login extends HttpServlet {
 			// PrintWriter out = response.getWriter();
 			// out.println("<font size='6' color=\"green\">Loggin Success</font>");
 		} else {
+			Boolean unsuccess = true;
+			request.setAttribute("unsuccess", unsuccess);
+			
 
 			System.out.println("check not success");
-			response.setContentType("text/html");
-
-			PrintWriter out = response.getWriter();
-			out.println("<font size='6' color=\"red\">Loggin Unsuccess</font>");
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("Index.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	

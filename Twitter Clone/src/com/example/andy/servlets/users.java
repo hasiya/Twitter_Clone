@@ -25,7 +25,7 @@ import com.example.andy.stores.UserStore;
 /**
  * Servlet implementation class users
  */
-@WebServlet({ "/Profile", "/Profile/*" })
+@WebServlet({ "/Profile/*" })
 public class users extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Cluster cluster;
@@ -52,57 +52,28 @@ public class users extends HttpServlet {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	int R = 0;
-	
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String[] url = request.getRequestURI().split("/");
-
 		System.out.println("in the user servlet");
+		String[] url = request.getRequestURI().split("/");
 		
-		UserModel um = new UserModel();
-		um.setCluster(cluster);
-		
-		String userName = url[3];
-		UserStore user = um.getUser(userName);
-		
-		System.out.println("in the user servlet - got user?");
-		
-		TweetModel tm= new TweetModel();
-		tm.setCluster(cluster);
-		
-		LinkedList<TweetStore> tweetList = tm.getTweets(user.getUserName());
-		
-		System.out.println("in the user servlet - got user tweets?");
-		
-		LinkedList<TweetStore> sortedtTweetList =  tm.sortTweets(tweetList);
-		
-		System.out.println("in the user servlet - tweets sorted?");
-		
-		//session.setAttribute("user", user);
-		
-		request.setAttribute("Tweets", sortedtTweetList); //Set a bean with the list in it
-		
-		/*response.sendRedirect("Profile.jsp");*/
-		
-		/*PrintWriter out = response.getWriter();
-		out.println("<font size='6' color=\"red\">Ta dah! <br>"+url[3]+"<br></font>");*/
+		if(url[2].equals("Profile"))
+			showUserPrfile(request, response);
 		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/RenderProfile.jsp");
-		dispatcher.forward(request, response);
 
-		
-		
-		
 		/*
 		 * System.out.println(user.getName());
-		 out.println("<font size='6' color=\"red\">Ta dah! <br>"+
+		 * out.println("<font size='6' color=\"red\">Ta dah! <br>"+
 		 * user.getId()+"<br>" + user.getName()username + "</font>"); if
 		 * (url.length > 2) out.println("<font size='6' color=\"red\">"+
 		 * url[3]+"<br></font>");
@@ -116,19 +87,69 @@ public class users extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UserStore user = (UserStore)request.getSession().getAttribute("user");
-		
-		if(!(request.getParameter("tweet").isEmpty())){
+		UserStore user = (UserStore) request.getSession().getAttribute("user");
+
+		if (!(request.getParameter("tweet").isEmpty()) || request.getParameter("tweet") == null) {
 
 			TweetModel tm = new TweetModel();
 			tm.setCluster(cluster);
-			TweetStore ts = new TweetStore(); 
+			TweetStore ts = new TweetStore();
 			ts.setUserName(user.getUserName());
 			ts.setTweetBody(request.getParameter("tweet"));
 
 			tm.postTweet(ts);
+			
+			
+		}
+		this.doGet(request, response);
+	}
 
-			this.doGet(request, response);
+	protected void showUserPrfile(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		UserStore logedUser = (UserStore)session.getAttribute("user");
+		
+		String[] url = request.getRequestURI().split("/");
+		String userName = url[(url.length)-1];		
+
+		UserModel um = new UserModel();
+		um.setCluster(cluster);
+		
+		UserStore user = um.getUser(userName);
+		
+		System.out.println("in the user servlet - got user? " + userName);		
+
+		TweetModel tm = new TweetModel();
+		tm.setCluster(cluster);
+
+		LinkedList<TweetStore> tweetList = tm.getTweets(user.getUserName());
+
+		System.out.println("in the user servlet - got user tweets?");
+
+		LinkedList<TweetStore> sortedtTweetList = tm.sortTweets(tweetList);
+
+		System.out.println("in the user servlet - tweets sorted?");
+
+		request.setAttribute("Tweets", sortedtTweetList); // Set a bean with
+															// the list in
+															// it
+		
+		if (logedUser.getUserName().equals(user.getUserName())) {
+			RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/RenderProfile.jsp");
+		dispatcher.forward(request, response);
+			
+		}
+		else {
+			Boolean isFollowing = um.isFollowing(logedUser.getUserName(), user.getUserName());
+			System.out.println(isFollowing);
+			request.setAttribute("user", user);
+			request.setAttribute("isFollowing", isFollowing);
+			
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("/RenderFollowProfile.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 
