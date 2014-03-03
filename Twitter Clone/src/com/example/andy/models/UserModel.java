@@ -38,7 +38,7 @@ public class UserModel {
 	public void RegisterUser(UserStore user)
 	{
 		Boolean register = false;
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 		PreparedStatement statement = session.prepare("insert into users (id, user_name, email, gender, name, password) values (now(), ?, ?, ?, ?, ?);");
 		BoundStatement boundStatement = new BoundStatement(statement);
 
@@ -53,7 +53,7 @@ public class UserModel {
 	
 	public LinkedList<UserStore> getUsers() {
 		LinkedList<UserStore> userList = new LinkedList<UserStore>();
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 
 		PreparedStatement statement = session.prepare("SELECT * from users");
 		BoundStatement boundStatement = new BoundStatement(statement);
@@ -78,7 +78,7 @@ public class UserModel {
 	
 	public UserStore getUser(String userName){
 		
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 		UserStore user_store = new UserStore();
 		
 		PreparedStatement statement = session.prepare("SELECT * from users where user_name = ?;");
@@ -110,7 +110,7 @@ public class UserModel {
 	
 	public LinkedList<UserStore> searchUser(String searchName) {
 		LinkedList<UserStore> userList = new LinkedList<UserStore>();
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 
 		PreparedStatement statement = session.prepare("SELECT * from users where name = ?");
 		BoundStatement boundStatement = new BoundStatement(statement);
@@ -138,7 +138,7 @@ public class UserModel {
 	public void followUser(String User, String Follower)
 	{
 		Boolean register = false;
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 		PreparedStatement statement = session.prepare("insert into followers(id, user_name, follow_user) values (now(), ?, ?);");
 		BoundStatement boundStatement = new BoundStatement(statement);
 
@@ -158,7 +158,7 @@ public class UserModel {
 		
 		LinkedList<FollowStore> followList = new LinkedList<FollowStore>();
 		
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 
 		PreparedStatement statement = session
 				.prepare("SELECT * from followers where user_name= ?;");

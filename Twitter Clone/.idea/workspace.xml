@@ -45,9 +45,7 @@
         <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state line="23" column="30" selection-start="781" selection-end="781" vertical-scroll-proportion="0.1712963" vertical-offset="317" max-vertical-offset="1394">
-              <folding>
-                <marker date="1393812060835" expanded="true" signature="404:446" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -378,8 +376,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -430,9 +428,7 @@
     <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="4" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1496">
-          <folding>
-            <marker date="1393812060835" expanded="true" signature="404:446" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -512,9 +508,7 @@
     <entry file="file://$PROJECT_DIR$/WebContent/RenderProfile.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="30" selection-start="781" selection-end="781" vertical-scroll-proportion="0.1712963" vertical-offset="317" max-vertical-offset="1394">
-          <folding>
-            <marker date="1393812060835" expanded="true" signature="404:446" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>

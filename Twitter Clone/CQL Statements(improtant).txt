@@ -31,3 +31,4 @@ Indexes:
 	CREATE INDEX user_tweets ON tweets (user_name);
 	CREATE INDEX user_index ON users (user_name);
 	CREATE INDEX name_index ON users (name);
+	CREATE INDEX follow_name ON followers (follow_user);

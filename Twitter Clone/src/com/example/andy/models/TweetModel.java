@@ -41,7 +41,7 @@ public class TweetModel {
 	
 	public void postTweet(TweetStore ts)
 	{
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 		PreparedStatement statement = session.prepare("insert into tweets (id, user_name, body, date_time) values (now(), ?, ?, dateof(now()));");
 		BoundStatement boundStatement = new BoundStatement(statement);
 
@@ -53,7 +53,7 @@ public class TweetModel {
 	
 	public LinkedList<TweetStore> getFollowTweets(String userName) {
 		LinkedList<TweetStore> tweetList = new LinkedList<TweetStore>();
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 
 		ArrayList<String> Followers = new ArrayList<String>();
 		Followers = getFollowersList(userName);
@@ -90,7 +90,7 @@ public class TweetModel {
 
 	public LinkedList<TweetStore> getTweets(String userName) {
 		LinkedList<TweetStore> tweetList = new LinkedList<TweetStore>();
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 
 		PreparedStatement statement = session
 				.prepare("SELECT * from tweets where user_name = ?;");
@@ -134,7 +134,7 @@ public class TweetModel {
 		System.out.println("getting Follower's list");
 		ArrayList<String> FollowersList = new ArrayList<String>();
 
-		Session session = cluster.connect("keyspace2");
+		Session session = cluster.connect("tclone");
 
 		PreparedStatement statement = session
 				.prepare("SELECT follow_user from followers where user_name= ?;");
